@@ -1,0 +1,16 @@
+.div-bg-login{
+    background-color: var(--gris) !important;
+}
+.img-barberia-vintage{
+    height: 80vh !important;
+}
+.div-img-barberia-vintage{
+    background-color: var(--negro) !important;
+    border: 2px solid var(--dorado) !important;
+}
+.div-col-iniciar-sesion{
+    height: 86vh !important;
+}
+.img-log-nombre{
+    width: 100% !important;
+}

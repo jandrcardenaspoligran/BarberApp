@@ -1,0 +1,41 @@
+<div class="container-fluid div-col-md-12 p-4 bg-gris fondo-app-component">
+    <app-header></app-header>
+    <div class="container-fluid bg-white rounded-3 fondo-cuerpo">
+        <div class="row py-5">
+            <div class="col-md-10 offset-md-1">
+                <h2 class="great-vibes-regular fs-1 fw-bold">Gestión de usuarios</h2>
+            </div>
+            <!-- <div class="col-md-10 offset-md-1 my-2">
+        <div class="row justify-content-end">
+            <button type="button" class="btn btn-dorado col-lg-2">Agregar usuario</button>
+        </div>
+    </div> -->
+            <div class="col-md-10 offset-md-1">
+                <table class="table table-striped table-hover table-bordered table-responsive col-md-12 mt-4"
+                    id="lista-usuarios">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Correo</th>
+                            <th class="text-center">Fecha Nacimiento</th>
+                            <th class="text-center">Género</th>
+                            <th class="text-center">Rol</th>
+                            <th class="text-center">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listaUsuarios">
+                            <td>{{item.nombre}} {{item.apellidos}}</td>
+                            <td>{{item.correo}}</td>
+                            <td class="text-center">{{item.fechaNacimiento.substring(0, 10) | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{item.genero}}</td>
+                            <td>{{item.rol.nombre}}</td>
+                            <td class="text-center"><a href="#" class="text-dorado"><i class="fa fa-pencil-square fa-2x"
+                                        aria-hidden="true"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

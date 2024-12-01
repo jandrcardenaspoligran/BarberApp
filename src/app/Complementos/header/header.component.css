@@ -1,0 +1,7 @@
+.img-logo{
+    width: 96px !important;
+}
+.nav-nombre-app{
+    font-size: 40px !important;
+    -webkit-text-stroke: 0.1px var(--gris);
+}

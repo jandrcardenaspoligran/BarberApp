@@ -1,0 +1,56 @@
+<div class="container-fluid p-0 m-0">
+    <div class="col-md-12 p-5 m-0 div-bg-login">
+        <div class="row col-md-10 offset-md-1">
+            <div class="col-md-6">
+                <div class="col-md-12 div-col-iniciar-sesion p-4 bg-white rounded-3 mx-3">
+                    <form action="#" form [formGroup]="form" (ngSubmit)="onSubmit();">
+                        <div class="col-md-10 offset-md-1">
+                            <h1 class="great-vibes-regular text-center mb-4 fw-bold">Registrarse</h1>
+                            <input type="email" class="form-control col-md-12 mb-3 border-dark border-2" id="correo"
+                                name="correo" placeholder="Correo Electrónico" formControlName="Correo">
+                            <input type="password" class="form-control col-md-12 mb-3 border-dark border-2" id="clave"
+                                name="clave" placeholder="Clave" formControlName="Clave">
+                            <input type="password" class="form-control col-md-12 mb-3 border-dark border-2" id="repetir_clave"
+                                name="repetir_clave" placeholder="Repetir Clave" formControlName="RepetirClave">
+                            <input type="text" class="form-control col-md-12 mb-3 border-dark border-2" id="nombre"
+                                name="nombre" placeholder="Nombre" formControlName="Nombre">
+                            <input type="text" class="form-control col-md-12 mb-3 border-dark border-2" id="apellidos"
+                                name="apellidos" placeholder="Apellidos" formControlName="Apellidos">
+                                <small class="m-0 p-0">Genero</small>
+                            <select type="text" class="form-control col-md-12 mb-3 border-dark border-2" id="genero"
+                                name="genero" placeholder="genero" formControlName="Genero">
+                                <option value="">Seleccione una opción</option>
+                                <option value="MASCULINO">Masculino</option>
+                                <option value="FEMENINO">Femenino</option>
+                                <option value="OTRO">Otro</option>
+                                <option value="PREFIERO_NO_DECIRLO">Prefiero no decirlo</option>
+                            </select>
+                            <small class="m-0 p-0">Fecha de nacimiento</small>
+                            <input type="date" class="form-control col-md-12 mb-3 border-dark border-2" id="fecha-nacimiento"
+                                name="fecha_nacimiento" formControlName="FechaNacimiento">
+                            <table class="col-md-12 mb-3">
+                                <tr>
+                                    <td>
+                                        <p class="fw-bold">¿Ya tienes una cuenta? <a href="Iniciar-Sesion" class="text-dorado fw-bold">Iniciar sesión</a></p>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="row justify-content-center">
+                                <button type="submit" class="btn btn-dorado col-md-6">Registrarse</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12 div-col-iniciar-sesion p-4 div-img-barberia-vintage rounded-3 mx-3">
+                    <div class="row justify-content-center p-0">
+                        <img src="../../../assets/imgs/barberia_vintage.jpg" alt="Fondo de Barbería"
+                            class="img-barberia-vintage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

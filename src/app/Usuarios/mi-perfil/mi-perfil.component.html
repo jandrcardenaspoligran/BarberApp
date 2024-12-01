@@ -1,0 +1,44 @@
+<div class="container-fluid div-col-md-12 p-4 bg-gris fondo-app-component">
+    <app-header></app-header>
+    <div class="container-fluid bg-white rounded-3 fondo-cuerpo">
+        <div class="row py-5">
+            <div class="col-md-10 offset-md-1">
+                <h2 class="great-vibes-regular fs-1 fw-bold mb-5">Mi Perfil</h2>
+            </div>
+            <form action="" form [formGroup]="form" (submit)="onSubmit();">
+                <div class="row col-md-10 offset-md-1">
+                    <div class="col-md-6 offset-md-3">
+                        <p class="text-center fw-bold">Correo</p>
+                        <p class="text-center" *ngIf="usuario!=undefined">{{usuario.correo}}</p>
+                        <input type="text" class="form-control col-md-12 mb-3 border-dark border-2" id="nombre"
+                            name="nombre" placeholder="Nombre" formControlName="Nombre">
+                        <input type="text" class="form-control col-md-12 mb-3 border-dark border-2" id="apellidos"
+                            name="apellidos" placeholder="Apellidos" formControlName="Apellidos">
+                        <small class="m-0 p-0">Genero</small>
+                        <select type="text" class="form-control col-md-12 mb-3 border-dark border-2" id="genero"
+                            name="nombre" placeholder="Nombre" formControlName="Genero">
+                            <option value="">Seleccione una opción</option>
+                            <option value="MASCULINO">Masculino</option>
+                            <option value="FEMENINO">Femenino</option>
+                            <option value="OTRO">Otro</option>
+                            <option value="PREFIERO_NO_DECIRLO">Prefiero no decirlo</option>
+                        </select>
+                        <small class="m-0 p-0">Fecha de nacimiento</small>
+                        <input type="date" class="form-control col-md-12 mb-3 border-dark border-2"
+                            id="fecha-nacimiento" name="fecha_nacimiento" formControlName="FechaNacimiento">
+                        <small class="m-0 p-0">Si desea cambiar la clave, ingrese la nueva clave. De lo contrario, deje lso dos campos en</small>
+                        <input type="text" class="form-control col-md-12 mb-3 border-dark border-2"
+                            id="clave" name="clave" formControlName="Clave">
+                        <small class="m-0 p-0">Repetir clave</small>
+                        <input type="text" class="form-control col-md-12 mb-3 border-dark border-2"
+                            id="clave" name="clave" formControlName="RepetirClave">
+                    </div>
+                </div>
+                <div class="row col-md-10 offset-md-1 justify-content-around mt-5">
+                    <button type="button" class="btn btn-secondary col-lg-3">Volver</button>
+                    <button type="submit" class="btn btn-dorado col-lg-3">Editar mi perfil</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container-fluid div-col-md-12 p-4 bg-gris fondo-app-component">
+    <app-header></app-header>
+    <div class="container-fluid bg-white rounded-3 fondo-cuerpo">
+        <div class="row py-5">
+            <div class="col-md-10 offset-md-1">
+                <h2 class="great-vibes-regular fs-1 fw-bold mb-5">Solicitar una cita</h2>
+            </div>
+            <div class="row col-md-10 offset-md-1" *ngIf="agenda == undefined">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <p for="idBarber" class="text-center fw-bold">Barber</p>
+                        <select name="idBarber" id="idBarber" class="form-control"
+                            (change)="consultarAgendaDisponible($event)">
+                            <option value="">Selecciona un barbero</option>
+                            <option *ngFor="let barber of barbersActivos" value="{{barber.id}}">
+                                {{barber.nombre}}&nbsp;{{barber.apellidos}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div *ngIf="agendaPorBarber != undefined">
+                    <div class="mt-5" *ngIf="agendaPorBarber.length > 0">
+                        <p class="fw-bold fs-4 text-center">Citas disponibles con el barber.</p>
+                        <div class="row justify-content-around">
+                            <div class="col-md-5 rounded-3 m-3 p-3 shadow border-dorado"
+                                *ngFor="let item of agendaPorBarber">
+                                <p class="mb-1 p-0"><strong>Fecha:&nbsp;</strong>{{item.fechaHora | date: 'dd/MM/yyyy'}}
+                                </p>
+                                <p class="m-0 p-0"><strong>Hora:&nbsp;</strong>{{item.fechaHora | date: 'hh:mm a'}}</p>
+                                <button type="button" class="btn btn-dorado shadow-sm col-md-6 offset-md-3 mt-3 fw-bold"
+                                    (click)="formularioSolicitarCita(item.id, item.fechaHora);">Agendar
+                                    Cita</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5" *ngIf="agendaPorBarber.length == 0">
+                        <p class="fw-bold fs-4 text-center">El barber no tiene citas disponibles</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="agenda != undefined" class="row col-md-10 offset-md-1">
+                <form action="#" form [formGroup]="form" (submit)="onSubmit();">
+                    <p class="fw-bold">¡Déjale un mensaje al Barber para tu cita el {{agenda.fechaHora | date:
+                        'dd/MM/yyyy hh:mm a'}}</p>
+                    <textarea name="msgCliente" id="msgCliente" class="form-control" formControlName="MsgCliente"></textarea>
+                    <p class="fw-bold mt-5">¡También puedes adjuntar una imagen de referencia del corte que deseas!</p>
+                    <input type="file" name="imgReferencia" id="imgReferencia" class="form-control mb-5" (change)="imgReferenciaChange($event);" formControlName="ImgReferencia">
+                    <div class="row justify-content-around">
+                        <button type="button" class="btn btn-secondary col-md-4" (click)="limpiarAgenda();">Volver</button>
+                        <button type="submit" class="btn btn-dorado col-md-4">Guardar y Agendar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

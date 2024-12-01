@@ -1,0 +1,48 @@
+<div class="container-fluid p-0 m-0">
+    <div class="col-md-12 p-5 m-0 div-bg-login">
+        <div class="row col-md-10 offset-md-1">
+            <div class="col-md-6">
+                <div class="col-md-12 div-col-iniciar-sesion p-4 bg-white rounded-3 mx-3">
+                    <form action="#" form [formGroup]="form" (submit)="onSubmit();">
+                        <div class="col-md-10 offset-md-1">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8 mb-5">
+                                    <img src="../../../assets/imgs/logo_nombre.png" class="img-log-nombre rounded-pill"
+                                        alt="Logo y nombre de la App.">
+                                </div>
+                            </div>
+                            <h1 class="great-vibes-regular text-center mb-4 fw-bold">Iniciar Sesión</h1>
+                            <input type="text" class="form-control col-md-12 mb-4 border-dark border-2" id="correo"
+                                name="correo" placeholder="Correo Electrónico" formControlName="Correo">
+                            <input type="password" class="form-control col-md-12 mb-4 border-dark border-2" id="clave"
+                                name="clave" placeholder="Clave" formControlName="Clave">
+                            <table class="col-md-12 mb-5">
+                                <tr>
+                                    <td>
+                                        <p class="fw-bold">¿No tienes una cuenta?</p>
+                                        <a href="Registrarse" class="text-dorado fw-bold">Registrarse</a>
+                                    </td>
+                                    <td class="text-end">
+                                        <p class="fw-bold">¿Olvidaste la clave?</p>
+                                        <a href="#" class="text-dorado fw-bold">Recuperarla</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="row justify-content-center">
+                                <button type="submit" class="btn btn-dorado col-md-6">Iniciar sesión</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12 div-col-iniciar-sesion p-4 div-img-barberia-vintage rounded-3 mx-3">
+                    <div class="row justify-content-center p-0">
+                        <img src="../../../assets/imgs/barberia_vintage.jpg" alt="Fondo de Barbería"
+                            class="img-barberia-vintage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

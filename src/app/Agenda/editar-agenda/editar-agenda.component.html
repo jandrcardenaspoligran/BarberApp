@@ -1,0 +1,39 @@
+<div class="container-fluid div-col-md-12 p-4 bg-gris fondo-app-component">
+    <app-header></app-header>
+    <div class="container-fluid bg-white rounded-3 fondo-cuerpo">
+        <div class="row py-5">
+            <div class="col-md-10 offset-md-1 mb-5">
+                <h2 class="great-vibes-regular fs-1 fw-bold">Editar cita</h2>
+            </div>
+            <div class="col-md-10 offset-md-1" *ngIf="agenda != undefined">
+                <p class="fw-bold fs-5">Información de la cita</p>
+                <hr>
+                <p class="fw-bold">Cliente</p>
+                <p>{{agenda.cliente.nombre}} {{agenda.cliente.apellidos}}</p>
+                <p class="fw-bold">Mensaje del cliente</p>
+                <p>{{agenda.msgCliente == null ? "N/A" : agenda.msgCliente}}</p>
+                <p class="fw-bold">Imagen de referencia</p>
+                <p>
+                    <img src="../../../assets/imgs/referencias/{{agenda.imgReferencia}}" width="800"
+                        alt="Imagen de referencia" *ngIf="agenda.imgReferencia != null">
+                    <label *ngIf="agenda.imgReferencia == null">N/A</label>
+                </p>
+                <form action="" form (submit)="onSubmit();" [formGroup]="form">
+                    <label for="obsBarber" class="mt-3">Observaciones</label>
+                    <textarea class="col-md-8 form-control" name="obsBarber" id="obsBarber"
+                        formControlName="obsBarber"></textarea>
+                    <label for="estado" class="mt-3">Estado</label>
+                    <select name="estado" id="estado" class="form-control col-md-8" formControlName="estado">
+                        <option value="AGENDADA">AGENDADA</option>
+                        <option value="COMPLETADA">COMPLETADA</option>
+                        <option value="CANCELADA">CANCELADA</option>
+                        <option value="RECHAZADA">RECHAZADA</option>
+                    </select>
+                    <div class="row justify-content-end mt-5">
+                        <button type="submit" class="btn btn-dorado col-md-4">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

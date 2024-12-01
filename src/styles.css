@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --dorado: #d4af37;
+    --gris: #4b4b4b;
+    --negro: #0f001f;
+    --blanco: #fff;
+}
+
+/*** Botones ***/
+.btn-dorado {
+    color: var(--blanco) !important;
+    background-color: var(--dorado) !important;
+    box-shadow: 2px 2px 5px #4b4b4b;
+}
+
+.btn-dorado:hover {
+    color: var(--dorado) !important;
+    background-color: var(--blanco) !important;
+    border: 2px solid var(--dorado) !important;
+    /* font-weight: bold; */
+}
+
+/*** Fondos ***/
+.bg-gris {
+    background-color: var(--gris) !important;
+}
+
+.bg-dorado {
+    background-color: var(--dorado) !important;
+}
+
+.fondo-app-component {
+    min-height: 100vh !important;
+}
+
+.fondo-cuerpo {
+    min-height: 70vh;
+}
+
+/*** Textos ***/
+
+.great-vibes-regular {
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.text-dorado {
+    color: var(--dorado) !important;
+}
+
+/*** ***/
+
+.border-dorado {
+    border: 2px solid var(--dorado) !important;
+}

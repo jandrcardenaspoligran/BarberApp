@@ -1,0 +1,39 @@
+<div class="container-fluid div-col-md-12 p-4 bg-gris fondo-app-component">
+    <app-header></app-header>
+    <div class="container-fluid bg-white rounded-3 fondo-cuerpo">
+        <div class="row py-5">
+            <div class="col-md-10 offset-md-1 mb-5">
+                <h2 class="great-vibes-regular fs-1 fw-bold">Editar cita</h2>
+            </div>
+            <div class="col-md-10 offset-md-1" *ngIf="agenda != undefined">
+                <p class="fw-bold fs-5">Información de la cita</p>
+                <hr>
+                <p class="fw-bold">Barber</p>
+                <p>{{agenda.barber.nombre}} {{agenda.barber.apellidos}}</p>
+                <p class="fw-bold">Fecha y Hora de la cita</p>
+                <p class="">{{agenda.fechaHora | date: "dd/MM/yyyy hh:mm a"}}</p>
+                <p class="fw-bold">Observaciones del barber</p>
+                <p>{{(agenda.obsBarber == null || agenda.obsBarber == 'null') ? "El Barber no ha agregado ninguna observación." : agenda.msgCliente}}</p>
+                <p class="fw-bold">Imagen de referencia</p>
+                <p>
+                    <img src="../../../assets/imgs/referencias/{{agenda.imgReferencia}}" width="800"
+                        alt="Imagen de referencia" *ngIf="agenda.imgReferencia != null">
+                    <label *ngIf="agenda.imgReferencia == null">No se adjuntó imagen de referencia.</label>
+                </p>
+                <form action="" form (submit)="onSubmit();" [formGroup]="form">
+                    <label for="msgCliente" class="mt-3">Mensaje</label>
+                    <textarea class="col-md-8 form-control" name="msgCliente" id="msgCliente"
+                        formControlName="msgCliente"></textarea>
+                    <label for="estado" class="mt-3">Estado</label>
+                    <select name="estado" id="estado" class="form-control col-md-8" formControlName="estado">
+                        <option value="AGENDADA">AGENDADA</option>
+                        <option value="CANCELADA">CANCELAR CITA</option>
+                    </select>
+                    <div class="row justify-content-end mt-5">
+                        <button type="submit" class="btn btn-dorado col-md-4">Editar cita</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
