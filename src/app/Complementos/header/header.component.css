@@ -1,7 +1,31 @@
-.img-logo{
+.img-logo {
     width: 96px !important;
 }
-.nav-nombre-app{
+
+.nav-nombre-app {
     font-size: 40px !important;
     -webkit-text-stroke: 0.1px var(--gris);
 }
+
+.icono-nav {
+    font-size: 40px !important;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 10%; /* Baja el badge un poco */
+    right: -5%; /* Lo mueve más hacia la izquierda */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    transform: translate(-50%, -50%); /* Ajusta la posición */
+  }
+  

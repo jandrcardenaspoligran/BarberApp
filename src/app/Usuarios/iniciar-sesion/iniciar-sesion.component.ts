@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/Services/usuarios.service';
@@ -10,21 +10,14 @@ import { UtilidadesService } from 'src/app/Services/utilidades.service';
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
-  public form: FormGroup =this.fb.group({
+  @Output() vistaIniciarSesion = new EventEmitter<boolean>(); 
+  public form: FormGroup = this.fb.group({
     Correo: [""],
     Clave: [""]
   });
   constructor(private fb: FormBuilder, private usuariosService: UsuariosService, private router: Router, private utilidades: UtilidadesService) { }
 
-  async ngOnInit(): Promise<void> {
-    setTimeout(() => {this.validarSesion()}, 1000);
-  }
-  async validarSesion(): Promise<void> {
-    let bandera = await this.utilidades.validarExpiracion();
-    if(bandera){
-      document.location.href= '/Solicitar-Cita';
-    }
-  }
+  ngOnInit() { }
 
   onSubmit() {
     let correo = this.form.get("Correo")?.value, clave = this.form.get("Clave")?.value;
@@ -35,16 +28,18 @@ export class IniciarSesionComponent implements OnInit {
         Correo: correo,
         Clave: clave
       }
-        this.usuariosService.iniciarSesion(body).subscribe(res => {
-          alert(res.mensaje);
-          if(res.estado == "SUCCESS"){
-            localStorage.setItem("token", res.token);
-            this.utilidades.guardarInfoToken(res.token);
-            this.router.navigate(['/Solicitar-Cita']);
-          }
-        })
+      this.usuariosService.iniciarSesion(body).subscribe(res => {
+        alert(res.mensaje);
+        if (res.estado == "SUCCESS") {
+          localStorage.setItem("token", res.token);
+          this.utilidades.guardarInfoToken(res.token);
+          this.router.navigate(['/Solicitar-Cita']);
+        }
+      })
     }
   }
 
-  
+  cambiarAIniciarSesion() {
+    this.vistaIniciarSesion.emit(false);
+  }
 }

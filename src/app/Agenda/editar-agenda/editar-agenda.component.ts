@@ -39,19 +39,18 @@ export class EditarAgendaComponent implements OnInit {
   }
 
   onSubmit() {
-    let body = {
-      EditadoPor: this.agenda.editadoPor,
-      Estado: this.form.get("estado")?.value,
-      FechaActualizacion: this.agenda.fechaActualizacion,
-      FechaCreacion: this.agenda.fechaCreacion,
-      FechaHora: this.agenda.fechaHora,
-      Id: this.agenda.id,
-      IdBarber: this.agenda.idBarber,
-      IdCliente: this.agenda.idCliente,
-      MsgCliente: this.agenda.msgCliente,
-      ObsBarber: this.form.get("obsBarber")?.value
-    }
-    this.agendaService.actualizarCita(body).subscribe(res => {
+    let formData: FormData = new FormData();
+      formData.append("EditadoPor", this.agenda.editadoPor)
+            formData.append("Estado", this.form.get("estado")?.value);
+            formData.append("FechaActualizacion", this.agenda.fechaActualizacion);
+            formData.append("FechaCreacion", this.agenda.fechaCreacion);
+            formData.append("FechaHora", this.agenda.fechaHora);
+            formData.append("Id", this.agenda.id);
+            formData.append("IdBarber", this.agenda.idBarber);
+            formData.append("IdCliente", this.agenda.idCliente);
+            formData.append("MsgCliente", this.agenda.msgCliente);
+            formData.append("ObsBarber", this.form.get("obsBarber")?.value);
+    this.agendaService.actualizarCita(formData).subscribe(res => {;
       
     });
   }

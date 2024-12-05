@@ -52,9 +52,9 @@ export class AgendaService {
     return this.http.post(`${this.api}/RegistrarCita`, formData, { headers })
   }
 
-  actualizarCita(body: any): Observable<any>{
+  actualizarCita(formData: FormData): Observable<any>{
     let token = localStorage.getItem("token");
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.api}/ActualizarCita`, body, { headers })
+    return this.http.post(`${this.api}/ActualizarCita`, formData, { headers })
   }
 }

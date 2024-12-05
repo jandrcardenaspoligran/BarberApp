@@ -46,6 +46,10 @@ export class MiPerfilComponent implements OnInit {
   }
 
   onSubmit() {
+    if (isNaN(this.form.get("Clave")?.value) || this.form.get("Clave")?.value.length != 0 || this.form.get("Clave")?.value.length != 4) {
+      alert("La clave debe contener 4 números.");
+      return;
+    }
     let body = {
       Id: this.usuario.id,
       Nombre: this.form.get("Nombre")?.value,
@@ -57,6 +61,7 @@ export class MiPerfilComponent implements OnInit {
     }
     this.usuariosServices.actualizarMiPerfil(body).subscribe(res => {
       alert(res.mensaje);
+      window.location.reload();
     });
   }
 }

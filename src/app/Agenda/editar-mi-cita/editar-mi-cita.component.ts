@@ -10,6 +10,7 @@ import { AgendaService } from 'src/app/Services/agenda.service';
 })
 export class EditarMiCitaComponent implements OnInit {
   public agenda: any;
+  public archivoImg: any;
   public form: FormGroup = this.fb.group({
     msgCliente: [""],
     estado: [""]
@@ -39,22 +40,30 @@ export class EditarMiCitaComponent implements OnInit {
   }
 
   onSubmit() {
-    let body = {
-      EditadoPor: this.agenda.editadoPor,
-      Estado: this.form.get("estado")?.value,
-      FechaActualizacion: this.agenda.fechaActualizacion,
-      FechaCreacion: this.agenda.fechaCreacion,
-      FechaHora: this.agenda.fechaHora,
-      Id: this.agenda.id,
-      IdBarber: this.agenda.idBarber,
-      IdCliente: this.agenda.idCliente,
-      MsgCliente: this.form.get("msgCliente")?.value,
-      ObsBarber: this.agenda.ObsBarber
-    }
-    this.agendaService.actualizarCita(body).subscribe(res => {
+    let formData: FormData = new FormData();
+    formData.append("EditadoPor", this.agenda.editadoPor);
+    formData.append("Estado", this.form.get("estado")?.value);
+    formData.append("FechaActualizacion", this.agenda.fechaActualizacion);
+    formData.append("FechaCreacion", this.agenda.fechaCreacion);
+    formData.append("FechaHora", this.agenda.fechaHora);
+    formData.append("Id", this.agenda.id);
+    formData.append("IdBarber", this.agenda.idBarber);
+    formData.append("IdCliente", this.agenda.idCliente);
+    formData.append("MsgCliente", this.form.get("msgCliente")?.value);
+    formData.append("ObsBarber", this.agenda.obsBarber);
+    if (this.archivoImg != undefined) formData.append("ImgArchivo", this.archivoImg);
+    this.agendaService.actualizarCita(formData).subscribe(res => {
       alert(res.mensaje);
-      window.location.href="/Mis-Citas";
+      window.location.href = "/Mis-Citas";
     });
+  }
+
+
+  imgReferenciaChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.archivoImg = file
+    }
   }
 
 }

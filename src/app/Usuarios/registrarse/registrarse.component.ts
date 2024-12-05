@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/Services/usuarios.service';
@@ -11,6 +11,7 @@ import { UtilidadesService } from 'src/app/Services/utilidades.service';
   styleUrls: ['./registrarse.component.css']
 })
 export class RegistrarseComponent implements OnInit {
+  @Output() vistaIniciarSesion = new EventEmitter<boolean>(); 
   public form!: FormGroup;
   constructor(private fb: FormBuilder, private usuariosService: UsuariosService, private router: Router, private utilidades: UtilidadesService) { }
 
@@ -24,10 +25,6 @@ export class RegistrarseComponent implements OnInit {
       Genero: ["", Validators.required],
       FechaNacimiento: ["", Validators.required]
     });
-    let bandera = await this.utilidades.validarExpiracion();
-    if(bandera){
-      this.router.navigate(['/solicitar-cita']);
-    }
   }
 
   onSubmit(): void {
@@ -55,5 +52,9 @@ export class RegistrarseComponent implements OnInit {
     } else {
       alert("Todos los campos son obligatorios");
     }
+  }
+  
+  cambiarAIniciarSesion() {
+    this.vistaIniciarSesion.emit(true);
   }
 }

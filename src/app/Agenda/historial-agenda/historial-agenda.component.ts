@@ -18,9 +18,8 @@ export class HistorialAgendaComponent implements OnInit {
   ngAfterViewInit(): void{ }
 
   async listarMiAgenda() {
-    await this.agendaService.consultarMiAgenda().subscribe(res => {
+    await this.agendaService.consultarHistorialCitas().subscribe(res => {
       if (res.estado == "SUCCESS") {
-        console.log("Se asignan roles.");
         this.listaAgenda = res.objeto;
         this.inicializarDataTable();
       }

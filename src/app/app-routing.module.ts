@@ -13,9 +13,9 @@ import { MisCitasComponent } from './Agenda/mis-citas/mis-citas.component';
 import { EditarMiCitaComponent } from './Agenda/editar-mi-cita/editar-mi-cita.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Iniciar-Sesion', pathMatch: 'full' },
-  { path: 'Iniciar-Sesion', component: IniciarSesionComponent },
-  { path: 'Registrarse', component: RegistrarseComponent },
+  { path: '', redirectTo: 'Solicitar-Cita', pathMatch: 'full' },
+  // { path: 'Iniciar-Sesion', component: IniciarSesionComponent },
+  // { path: 'Registrarse', component: RegistrarseComponent },
   { path: 'Solicitar-Cita', component: SolicitarCitaComponent },
   { path: 'Mi-Agenda', component: ListarAgendasComponent },
   { path: 'Editar-Agenda', component: EditarAgendaComponent },

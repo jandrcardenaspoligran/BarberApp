@@ -1,6 +1,7 @@
-<!-- <div class="container-fluid div-col-md-12 p-4 bg-gris fondo-app-component">
-    <app-header></app-header>
-    <div class="container-fluid bg-white rounded-3 fondo-cuerpo">
-    </div>
-</div> -->
-<router-outlet></router-outlet>
+<div id="div-autenticacion" *ngIf="!(sesionValida());">
+    <app-iniciar-sesion (vistaIniciarSesion)="cambiarAIniciarSesion($event)" *ngIf="vistaIniciarSesion"></app-iniciar-sesion>
+    <app-registrarse (vistaIniciarSesion)="cambiarAIniciarSesion($event)" *ngIf="!vistaIniciarSesion"></app-registrarse>
+</div>
+<div class="div-router-outlet" *ngIf="sesionValida();">
+    <router-outlet></router-outlet>
+</div>

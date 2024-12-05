@@ -23,7 +23,7 @@ export class SolicitarCitaComponent implements OnInit {
     this.listarBarbersActivo();
   }
 
-  initForm(){
+  initForm() {
     this.form = this.fb.group({
       MsgCliente: [""],
       ImgReferencia: [""]
@@ -63,28 +63,32 @@ export class SolicitarCitaComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     let formData: FormData = new FormData();
     formData.append("Id", this.agenda.id);
     formData.append("ImgArchivo", this.archivoImg);
     formData.append("FechaHora", this.agenda.fechaHora);
     formData.append("IdBarber", this.agenda.idBarber);
     formData.append("FechaCreacion", this.agenda.fechaCreacion);
-    formData.append("MsgCliente", this.form.get("MsgCliente")?.value == undefined ? "" :  this.form.get("MsgCliente")?.value);
+    formData.append("MsgCliente", this.form.get("MsgCliente")?.value == undefined ? "" : this.form.get("MsgCliente")?.value);
     this.agendaService.registrarCita(formData).subscribe(res => {
       alert(res.mensaje);
-      window.location.reload;
+      if (res.estado == "SUCCESS") {
+        window.location.href = "Mis-Citas";
+      }else{
+        window.location.reload();
+      }
     });
   }
 
   imgReferenciaChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-    this.archivoImg = file 
+      this.archivoImg = file
     }
   }
 
-  limpiarAgenda(){
+  limpiarAgenda() {
     this.agenda = undefined;
   }
 }
